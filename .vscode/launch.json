@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "C++ (GDB) Launch",
+            "type": "cppdbg",  // 使用 cppdbg 作为调试类型
+            "request": "launch",
+            "program": "main",  // 可执行文件路径
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,  // 移除或调整该项
+            "externalConsole": false,  // 设置为 false，避免外部控制台
+            "MIMode": "gdb",  // 设置调试模式为 gdb
+            "miDebuggerPath": "/usr/bin/gdb",  // 调试器路径
+            "preLaunchTask": "build"
+        }
+    ]
+}

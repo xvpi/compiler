@@ -1,0 +1,2 @@
+/usr/bin/ar qc /home/ubuntu/compiler/bin/libjsoncpp.a CMakeFiles/jsoncpp.dir/src/third_party/jsoncpp/jsoncpp.cpp.o
+/usr/bin/ranlib /home/ubuntu/compiler/bin/libjsoncpp.a
