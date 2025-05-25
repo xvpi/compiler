@@ -266,6 +266,11 @@ struct LVal: AstNode{
     string v;
     Type t;
     int i;  // array index, legal if t is IntPtr or FloatPtr
+    /**********TODO*/
+    // v表示变量或数组的名称,当结点类型是数组时则ofs为一个整型变量,表示目标位置的偏移量
+    string ofs;
+    // 当LVal解析数组的维数小于数组的实际维数时,表明这是一个数组指针
+    bool isPtr;
 
     /**
      * @brief constructor

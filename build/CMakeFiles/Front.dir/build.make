@@ -97,19 +97,19 @@ CMakeFiles/Front.dir/src/front/lexical.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Front.dir/src/front/lexical.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/compiler/src/front/lexical.cpp -o CMakeFiles/Front.dir/src/front/lexical.cpp.s
 
-CMakeFiles/Front.dir/src/front/segmantic.cpp.o: CMakeFiles/Front.dir/flags.make
-CMakeFiles/Front.dir/src/front/segmantic.cpp.o: /home/ubuntu/compiler/src/front/segmantic.cpp
-CMakeFiles/Front.dir/src/front/segmantic.cpp.o: CMakeFiles/Front.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ubuntu/compiler/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Front.dir/src/front/segmantic.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Front.dir/src/front/segmantic.cpp.o -MF CMakeFiles/Front.dir/src/front/segmantic.cpp.o.d -o CMakeFiles/Front.dir/src/front/segmantic.cpp.o -c /home/ubuntu/compiler/src/front/segmantic.cpp
+CMakeFiles/Front.dir/src/front/semantic.cpp.o: CMakeFiles/Front.dir/flags.make
+CMakeFiles/Front.dir/src/front/semantic.cpp.o: /home/ubuntu/compiler/src/front/semantic.cpp
+CMakeFiles/Front.dir/src/front/semantic.cpp.o: CMakeFiles/Front.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ubuntu/compiler/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Front.dir/src/front/semantic.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Front.dir/src/front/semantic.cpp.o -MF CMakeFiles/Front.dir/src/front/semantic.cpp.o.d -o CMakeFiles/Front.dir/src/front/semantic.cpp.o -c /home/ubuntu/compiler/src/front/semantic.cpp
 
-CMakeFiles/Front.dir/src/front/segmantic.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Front.dir/src/front/segmantic.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/compiler/src/front/segmantic.cpp > CMakeFiles/Front.dir/src/front/segmantic.cpp.i
+CMakeFiles/Front.dir/src/front/semantic.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Front.dir/src/front/semantic.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/compiler/src/front/semantic.cpp > CMakeFiles/Front.dir/src/front/semantic.cpp.i
 
-CMakeFiles/Front.dir/src/front/segmantic.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Front.dir/src/front/segmantic.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/compiler/src/front/segmantic.cpp -o CMakeFiles/Front.dir/src/front/segmantic.cpp.s
+CMakeFiles/Front.dir/src/front/semantic.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Front.dir/src/front/semantic.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/compiler/src/front/semantic.cpp -o CMakeFiles/Front.dir/src/front/semantic.cpp.s
 
 CMakeFiles/Front.dir/src/front/syntax.cpp.o: CMakeFiles/Front.dir/flags.make
 CMakeFiles/Front.dir/src/front/syntax.cpp.o: /home/ubuntu/compiler/src/front/syntax.cpp
@@ -143,7 +143,7 @@ CMakeFiles/Front.dir/src/front/token.cpp.s: cmake_force
 Front_OBJECTS = \
 "CMakeFiles/Front.dir/src/front/abstract_syntax_tree.cpp.o" \
 "CMakeFiles/Front.dir/src/front/lexical.cpp.o" \
-"CMakeFiles/Front.dir/src/front/segmantic.cpp.o" \
+"CMakeFiles/Front.dir/src/front/semantic.cpp.o" \
 "CMakeFiles/Front.dir/src/front/syntax.cpp.o" \
 "CMakeFiles/Front.dir/src/front/token.cpp.o"
 
@@ -152,7 +152,7 @@ Front_EXTERNAL_OBJECTS =
 
 /home/ubuntu/compiler/bin/libFront.a: CMakeFiles/Front.dir/src/front/abstract_syntax_tree.cpp.o
 /home/ubuntu/compiler/bin/libFront.a: CMakeFiles/Front.dir/src/front/lexical.cpp.o
-/home/ubuntu/compiler/bin/libFront.a: CMakeFiles/Front.dir/src/front/segmantic.cpp.o
+/home/ubuntu/compiler/bin/libFront.a: CMakeFiles/Front.dir/src/front/semantic.cpp.o
 /home/ubuntu/compiler/bin/libFront.a: CMakeFiles/Front.dir/src/front/syntax.cpp.o
 /home/ubuntu/compiler/bin/libFront.a: CMakeFiles/Front.dir/src/front/token.cpp.o
 /home/ubuntu/compiler/bin/libFront.a: CMakeFiles/Front.dir/build.make

@@ -227,29 +227,29 @@ src/front/lexical.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Front.dir/build.make CMakeFiles/Front.dir/src/front/lexical.cpp.s
 .PHONY : src/front/lexical.cpp.s
 
-src/front/segmantic.o: src/front/segmantic.cpp.o
-.PHONY : src/front/segmantic.o
+src/front/semantic.o: src/front/semantic.cpp.o
+.PHONY : src/front/semantic.o
 
 # target to build an object file
-src/front/segmantic.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Front.dir/build.make CMakeFiles/Front.dir/src/front/segmantic.cpp.o
-.PHONY : src/front/segmantic.cpp.o
+src/front/semantic.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Front.dir/build.make CMakeFiles/Front.dir/src/front/semantic.cpp.o
+.PHONY : src/front/semantic.cpp.o
 
-src/front/segmantic.i: src/front/segmantic.cpp.i
-.PHONY : src/front/segmantic.i
+src/front/semantic.i: src/front/semantic.cpp.i
+.PHONY : src/front/semantic.i
 
 # target to preprocess a source file
-src/front/segmantic.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Front.dir/build.make CMakeFiles/Front.dir/src/front/segmantic.cpp.i
-.PHONY : src/front/segmantic.cpp.i
+src/front/semantic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Front.dir/build.make CMakeFiles/Front.dir/src/front/semantic.cpp.i
+.PHONY : src/front/semantic.cpp.i
 
-src/front/segmantic.s: src/front/segmantic.cpp.s
-.PHONY : src/front/segmantic.s
+src/front/semantic.s: src/front/semantic.cpp.s
+.PHONY : src/front/semantic.s
 
 # target to generate assembly for a file
-src/front/segmantic.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Front.dir/build.make CMakeFiles/Front.dir/src/front/segmantic.cpp.s
-.PHONY : src/front/segmantic.cpp.s
+src/front/semantic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Front.dir/build.make CMakeFiles/Front.dir/src/front/semantic.cpp.s
+.PHONY : src/front/semantic.cpp.s
 
 src/front/syntax.o: src/front/syntax.cpp.o
 .PHONY : src/front/syntax.o
@@ -343,9 +343,9 @@ help:
 	@echo "... src/front/lexical.o"
 	@echo "... src/front/lexical.i"
 	@echo "... src/front/lexical.s"
-	@echo "... src/front/segmantic.o"
-	@echo "... src/front/segmantic.i"
-	@echo "... src/front/segmantic.s"
+	@echo "... src/front/semantic.o"
+	@echo "... src/front/semantic.i"
+	@echo "... src/front/semantic.s"
 	@echo "... src/front/syntax.o"
 	@echo "... src/front/syntax.i"
 	@echo "... src/front/syntax.s"

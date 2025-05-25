@@ -1,5 +1,5 @@
-CMakeFiles/Front.dir/src/front/segmantic.cpp.o: \
- /home/ubuntu/compiler/src/front/segmantic.cpp /usr/include/stdc-predef.h \
+CMakeFiles/Front.dir/src/front/semantic.cpp.o: \
+ /home/ubuntu/compiler/src/front/semantic.cpp /usr/include/stdc-predef.h \
  /home/ubuntu/compiler/./include/front/semantic.h \
  /home/ubuntu/compiler/./include/ir/ir.h \
  /home/ubuntu/compiler/./include/ir/ir_operand.h \
@@ -186,5 +186,5 @@ CMakeFiles/Front.dir/src/front/segmantic.cpp.o: \
  /usr/include/c++/13/bits/stl_deque.h /usr/include/c++/13/bits/deque.tcc \
  /usr/include/c++/13/stack /usr/include/c++/13/bits/stl_stack.h \
  /usr/include/c++/13/set /usr/include/c++/13/bits/stl_set.h \
- /usr/include/c++/13/bits/stl_multiset.h /usr/include/c++/13/iostream \
- /usr/include/c++/13/cassert /usr/include/assert.h
+ /usr/include/c++/13/bits/stl_multiset.h /usr/include/c++/13/cassert \
+ /usr/include/assert.h

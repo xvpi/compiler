@@ -16,6 +16,7 @@
 #include"ir/ir.h"
 #include"front/abstract_syntax_tree.h"
 
+#include<vector>
 #include<map>
 #include<string>
 #include<vector>
@@ -29,7 +30,14 @@ namespace frontend
 // definition of symbol table entry
 struct STE {
     ir::Operand operand;
-    vector<int> dimension;  // 数组每一个维度的维数
+    vector<int> dimension;
+    
+    // TODO2.10;
+    int size;
+    bool isConst;
+    string val;
+    STE();
+    STE(ir::Operand, vector<int>, int, bool);
 };
 
 using map_str_ste = map<string, STE>;
@@ -45,15 +53,14 @@ map<std::string,ir::Function*>* get_lib_funcs();
 
 // definition of symbol table
 struct SymbolTable{
-    vector<ScopeInfo> scope_stack;  // 作用域向量
-    map<std::string, ir::Function*> functions;  // 名字--ir::function,方便调用
-    int block_cnt = 0;  // 当前作用域编号
+    vector<ScopeInfo> scope_stack;
+    map<std::string,ir::Function*> functions;
 
     /**
      * @brief enter a new scope, record the infomation in scope stacks
-     * @param node: a Block node, entering a new Block means a new name scope
      */
-    void add_scope(Block*);
+    void add_scope();
+
 
     /**
      * @brief exit a scope, pop out infomations
@@ -80,7 +87,7 @@ struct SymbolTable{
      * @param id identifier name
      * @return Operand 
      */
-    ir::Operand get_operand(string id) const;
+    // ir::Operand get_operand(string id) const;
 
     /**
      * @brief get the right ste with the input name
@@ -93,54 +100,60 @@ struct SymbolTable{
 
 // singleton class
 struct Analyzer {
-    int tmp_cnt;    // 临时变量计数器
-    vector<ir::Instruction*> g_init_inst;   // 全局初始化IR向量
-    SymbolTable symbol_table;     // 符号表
-    ir::Function* curr_function = nullptr;  // 当前函数
+    int tmp_cnt;
+    vector<ir::Instruction*> g_init_inst;
+    SymbolTable symbol_table;
 
+    // TODO2.24;
+    ir::Function* cur_func;
     /**
      * @brief constructor
      */
     Analyzer();
 
-    // analysis functions
+    // analyze functions
     ir::Program get_ir_program(CompUnit*);
 
     // reject copy & assignment
     Analyzer(const Analyzer&) = delete;
     Analyzer& operator=(const Analyzer&) = delete;
 
-    // 分析函数
-    void type_transform(ir::Operand& , ir::Operand& , vector<ir::Instruction*>& );
-    ir::Operand convert_if_needed(ir::Operand src, Type target, vector<ir::Instruction*>& buffer);
-    void analysisCompUnit(CompUnit* , ir::Program& );
-    void analysisFuncDef(FuncDef*, ir::Function&);
-    void analysisDecl(Decl*, vector<ir::Instruction*>& );
-    void analysisConstDecl(ConstDecl*, vector<ir::Instruction*>&);
-    void analysisBType(BType*, vector<ir::Instruction*>&);
-    void analysisConstDef(ConstDef*, vector<ir::Instruction*>&);
-    void analysisConstInitVal(ConstInitVal*, vector<ir::Instruction*>&);
-    void analysisVarDecl(VarDecl*, vector<ir::Instruction*>&);
-    void analysisVarDef(VarDef*, vector<ir::Instruction*>&);
-    void analysisInitVal(InitVal*, vector<ir::Instruction*>&);
-    void analysisFuncFParam(FuncFParam*, ir::Function&);
-    void analysisFuncFParams(FuncFParams*, ir::Function&);
-    void analysisBlock(Block*, vector<ir::Instruction*>&);
-    void analysisBlockItem(BlockItem*, vector<ir::Instruction*>&);
-    void analysisStmt(Stmt* , vector<ir::Instruction*>&);
-    void analysisExp(Exp* , vector<ir::Instruction*>&);
-    void analysisCond(Cond* , vector<ir::Instruction*>&);
-    void analysisLVal(LVal* , vector<ir::Instruction*>&);
-    void analysisPrimaryExp(PrimaryExp* , vector<ir::Instruction*>&);
-    void analysisUnaryExp(UnaryExp* , vector<ir::Instruction*>&);
-    void analysisFuncRParams(FuncRParams* , vector<ir::Instruction*>&, ir::CallInst&);
-    void analysisMulExp(MulExp* , vector<ir::Instruction*>&);
-    void analysisAddExp(AddExp* , vector<ir::Instruction*>&);
-    void analysisRelExp(RelExp* , vector<ir::Instruction*>&);
-    void analysisEqExp(EqExp* , vector<ir::Instruction*>&);
-    void analysisLAndExp(LAndExp* , vector<ir::Instruction*>&);
-    void analysisLOrExp(LOrExp* , vector<ir::Instruction*>&);
-    void analysisConstExp(ConstExp* , vector<ir::Instruction*>&);
+    // TODO2.9;
+    void analyzeCompUnit(CompUnit*);
+    void analyzeDecl(Decl*, vector<ir::Instruction*> &);
+    void analyzeConstDecl(ConstDecl*, vector<ir::Instruction*> &);
+    void analyzeBType(BType*);
+    void analyzeConstDef(ConstDef*, vector<ir::Instruction*> &, ir::Type);
+    void analyzeConstInitVal(ConstInitVal*, vector<ir::Instruction*> &, int, int, int, vector<int> &);
+    void analyzeVarDecl(VarDecl*, vector<ir::Instruction*> &);
+    void analyzeVarDef(VarDef*, vector<ir::Instruction*> &, ir::Type);
+    void analyzeInitVal(InitVal* root, vector<ir::Instruction*> &, int, int, int, vector<int> &);
+    void analyzeFuncDef(FuncDef*);
+    ir::Type analyzeFuncType(FuncType*);
+    void analyzeFuncFParams(FuncFParams*, vector<ir::Operand> &);
+    void analyzeFuncFParam(FuncFParam*, vector<ir::Operand> &);
+    void analyzeBlock(Block*, vector<ir::Instruction*> &);
+    void analyzeBlockItem(BlockItem*, vector<ir::Instruction*> &);
+    void analyzeStmt(Stmt*, vector<ir::Instruction*> &);
+    void analyzeConstExp(ConstExp*);    
+    void analyzeExp(Exp*, vector<ir::Instruction*> &);    
+    void analyzeCond(Cond*, vector<ir::Instruction*> &);
+    void analyzeLOrExp(LOrExp*, vector<ir::Instruction*> &);
+    void analyzeLAndExp(LAndExp*, vector<ir::Instruction*> &);
+    void analyzeEqExp(EqExp*, vector<ir::Instruction*> &);
+    void analyzeRelExp(RelExp*, vector<ir::Instruction*> &);
+    void analyzeAddExp(AddExp*, vector<ir::Instruction*> &);
+    void analyzeMulExp(MulExp*, vector<ir::Instruction*> &);
+    void analyzeUnaryExp(UnaryExp*, vector<ir::Instruction*> &);
+    void analyzePrimaryExp(PrimaryExp*, vector<ir::Instruction*> &);
+    void analyzeFuncRParams(FuncRParams*, vector<ir::Operand> &, vector<ir::Operand> &, vector<ir::Instruction*> &);
+    void analyzeUnaryOp(UnaryOp*);
+    void analyzeLVal(LVal*, vector<ir::Instruction*> &);
+    void analyzeNumber(Number*, vector<ir::Instruction*> &);
+        
+    ir::Operand Literal2Var(ir::Type, string, vector<ir::Instruction*> &);
+    void BinaryLiteral(string &, ir::Type &t1,string &, ir::Type &, frontend::TokenType tk_type);
+    void BinaryVar(ir::Operand &, ir::Operand &, frontend::TokenType, vector<ir::Instruction*> &);
 };
 
 } // namespace frontend
