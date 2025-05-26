@@ -1,21 +1,9 @@
-/**
- * @file semantic.h
- * @author Yuntao Dai (d1581209858@live.com)
- * @brief 
- * @version 0.1
- * @date 2023-01-06
- * 
- * a Analyzer should 
- * @copyright Copyright (c) 2023
- * 
- */
-
 #ifndef SEMANTIC_H
 #define SEMANTIC_H
 
 #include"ir/ir.h"
 #include"front/abstract_syntax_tree.h"
-
+#include <functional>
 #include<vector>
 #include<map>
 #include<string>
@@ -32,7 +20,7 @@ struct STE {
     ir::Operand operand;
     vector<int> dimension;
     
-    // TODO2.10;
+    // TODO:新增字符表属性和函数;
     int size;
     bool isConst;
     string val;
@@ -104,54 +92,53 @@ struct Analyzer {
     vector<ir::Instruction*> g_init_inst;
     SymbolTable symbol_table;
 
-    // TODO2.24;
+    // TODO：新增属性;
     ir::Function* cur_func;
     /**
      * @brief constructor
      */
     Analyzer();
 
-    // analyze functions
+    // analysis functions
     ir::Program get_ir_program(CompUnit*);
 
     // reject copy & assignment
     Analyzer(const Analyzer&) = delete;
     Analyzer& operator=(const Analyzer&) = delete;
 
-    // TODO2.9;
-    void analyzeCompUnit(CompUnit*);
-    void analyzeDecl(Decl*, vector<ir::Instruction*> &);
-    void analyzeConstDecl(ConstDecl*, vector<ir::Instruction*> &);
-    void analyzeBType(BType*);
-    void analyzeConstDef(ConstDef*, vector<ir::Instruction*> &, ir::Type);
-    void analyzeConstInitVal(ConstInitVal*, vector<ir::Instruction*> &, int, int, int, vector<int> &);
-    void analyzeVarDecl(VarDecl*, vector<ir::Instruction*> &);
-    void analyzeVarDef(VarDef*, vector<ir::Instruction*> &, ir::Type);
-    void analyzeInitVal(InitVal* root, vector<ir::Instruction*> &, int, int, int, vector<int> &);
-    void analyzeFuncDef(FuncDef*);
-    ir::Type analyzeFuncType(FuncType*);
-    void analyzeFuncFParams(FuncFParams*, vector<ir::Operand> &);
-    void analyzeFuncFParam(FuncFParam*, vector<ir::Operand> &);
-    void analyzeBlock(Block*, vector<ir::Instruction*> &);
-    void analyzeBlockItem(BlockItem*, vector<ir::Instruction*> &);
-    void analyzeStmt(Stmt*, vector<ir::Instruction*> &);
-    void analyzeConstExp(ConstExp*);    
-    void analyzeExp(Exp*, vector<ir::Instruction*> &);    
-    void analyzeCond(Cond*, vector<ir::Instruction*> &);
-    void analyzeLOrExp(LOrExp*, vector<ir::Instruction*> &);
-    void analyzeLAndExp(LAndExp*, vector<ir::Instruction*> &);
-    void analyzeEqExp(EqExp*, vector<ir::Instruction*> &);
-    void analyzeRelExp(RelExp*, vector<ir::Instruction*> &);
-    void analyzeAddExp(AddExp*, vector<ir::Instruction*> &);
-    void analyzeMulExp(MulExp*, vector<ir::Instruction*> &);
-    void analyzeUnaryExp(UnaryExp*, vector<ir::Instruction*> &);
-    void analyzePrimaryExp(PrimaryExp*, vector<ir::Instruction*> &);
-    void analyzeFuncRParams(FuncRParams*, vector<ir::Operand> &, vector<ir::Operand> &, vector<ir::Instruction*> &);
-    void analyzeUnaryOp(UnaryOp*);
-    void analyzeLVal(LVal*, vector<ir::Instruction*> &);
-    void analyzeNumber(Number*, vector<ir::Instruction*> &);
-        
-    ir::Operand Literal2Var(ir::Type, string, vector<ir::Instruction*> &);
+    void analysisCompUnit(CompUnit*);
+    void analysisDecl(Decl*, vector<ir::Instruction*> &);
+    void analysisConstDecl(ConstDecl*, vector<ir::Instruction*> &);
+    void analysisBType(BType*);
+    void analysisConstDef(ConstDef*, vector<ir::Instruction*> &, ir::Type);
+    void analysisConstInitVal(ConstInitVal*, vector<ir::Instruction*> &, int, int, int, vector<int> &);
+    void analysisVarDecl(VarDecl*, vector<ir::Instruction*> &);
+    void analysisVarDef(VarDef*, vector<ir::Instruction*> &, ir::Type);
+    void analysisInitVal(InitVal* root, vector<ir::Instruction*> &, int, int, int, vector<int> &);
+    void analysisFuncDef(FuncDef*);
+    ir::Type analysisFuncType(FuncType*);
+    void analysisFuncFParams(FuncFParams*, vector<ir::Operand> &);
+    void analysisFuncFParam(FuncFParam*, vector<ir::Operand> &);
+    void analysisBlock(Block*, vector<ir::Instruction*> &);
+    void analysisBlockItem(BlockItem*, vector<ir::Instruction*> &);
+    void analysisStmt(Stmt*, vector<ir::Instruction*> &);
+    void analysisConstExp(ConstExp*);    
+    void analysisExp(Exp*, vector<ir::Instruction*> &);    
+    void analysisCond(Cond*, vector<ir::Instruction*> &);
+    void analysisLOrExp(LOrExp*, vector<ir::Instruction*> &);
+    void analysisLAndExp(LAndExp*, vector<ir::Instruction*> &);
+    void analysisEqExp(EqExp*, vector<ir::Instruction*> &);
+    void analysisRelExp(RelExp*, vector<ir::Instruction*> &);
+    void analysisAddExp(AddExp*, vector<ir::Instruction*> &);
+    void analysisMulExp(MulExp*, vector<ir::Instruction*> &);
+    void analysisUnaryExp(UnaryExp*, vector<ir::Instruction*> &);
+    void analysisPrimaryExp(PrimaryExp*, vector<ir::Instruction*> &);
+    void analysisFuncRParams(FuncRParams*, vector<ir::Operand> &, vector<ir::Operand> &, vector<ir::Instruction*> &);
+    void analysisUnaryOp(UnaryOp*);
+    void analysisLVal(LVal*, vector<ir::Instruction*> &);
+    void analysisNumber(Number*, vector<ir::Instruction*> &);
+    std::string calculateBinary(TokenType tk_type, float lhs, float rhs);    
+    ir::Operand Literal2Var(ir::Type typ, const std::string& val, std::vector<ir::Instruction*>& pgm);
     void BinaryLiteral(string &, ir::Type &t1,string &, ir::Type &, frontend::TokenType tk_type);
     void BinaryVar(ir::Operand &, ir::Operand &, frontend::TokenType, vector<ir::Instruction*> &);
 };

@@ -73,15 +73,15 @@ CMakeFiles/compiler.dir/main.cpp.o: CMakeFiles/compiler.dir/flags.make
 CMakeFiles/compiler.dir/main.cpp.o: /home/ubuntu/compiler/main.cpp
 CMakeFiles/compiler.dir/main.cpp.o: CMakeFiles/compiler.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ubuntu/compiler/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/compiler.dir/main.cpp.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/compiler.dir/main.cpp.o -MF CMakeFiles/compiler.dir/main.cpp.o.d -o CMakeFiles/compiler.dir/main.cpp.o -c /home/ubuntu/compiler/main.cpp
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/compiler.dir/main.cpp.o -MF CMakeFiles/compiler.dir/main.cpp.o.d -o CMakeFiles/compiler.dir/main.cpp.o -c /home/ubuntu/compiler/main.cpp
 
 CMakeFiles/compiler.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/compiler.dir/main.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/compiler/main.cpp > CMakeFiles/compiler.dir/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/compiler/main.cpp > CMakeFiles/compiler.dir/main.cpp.i
 
 CMakeFiles/compiler.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/compiler.dir/main.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/compiler/main.cpp -o CMakeFiles/compiler.dir/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/compiler/main.cpp -o CMakeFiles/compiler.dir/main.cpp.s
 
 # Object files for target compiler
 compiler_OBJECTS = \
