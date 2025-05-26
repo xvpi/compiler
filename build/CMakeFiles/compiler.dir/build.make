@@ -92,6 +92,7 @@ compiler_EXTERNAL_OBJECTS =
 
 /home/ubuntu/compiler/bin/compiler: CMakeFiles/compiler.dir/main.cpp.o
 /home/ubuntu/compiler/bin/compiler: CMakeFiles/compiler.dir/build.make
+/home/ubuntu/compiler/bin/compiler: /home/ubuntu/compiler/bin/libBackend.a
 /home/ubuntu/compiler/bin/compiler: /home/ubuntu/compiler/bin/libFront.a
 /home/ubuntu/compiler/bin/compiler: /home/ubuntu/compiler/bin/libjsoncpp.a
 /home/ubuntu/compiler/bin/compiler: CMakeFiles/compiler.dir/link.txt

@@ -1,0 +1,2 @@
+/usr/bin/ar qc /home/ubuntu/compiler/bin/libBackend.a CMakeFiles/Backend.dir/src/backend/generator.cpp.o
+/usr/bin/ranlib /home/ubuntu/compiler/bin/libBackend.a

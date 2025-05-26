@@ -199,4 +199,7 @@ CMakeFiles/compiler.dir/main.cpp.o: /home/ubuntu/compiler/main.cpp \
  /home/ubuntu/compiler/./include/front/semantic.h \
  /usr/include/c++/13/functional /usr/include/c++/13/bits/std_function.h \
  /home/ubuntu/compiler/./include/tools/ir_executor.h \
+ /home/ubuntu/compiler/./include/backend/generator.h \
+ /home/ubuntu/compiler/./include/backend/rv_def.h \
+ /home/ubuntu/compiler/./include/backend/rv_inst_impl.h \
  /usr/include/c++/13/cassert /usr/include/assert.h

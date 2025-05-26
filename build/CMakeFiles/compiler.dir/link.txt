@@ -1,1 +1,1 @@
-/usr/bin/c++ -Wall CMakeFiles/compiler.dir/main.cpp.o -o /home/ubuntu/compiler/bin/compiler   -L/home/ubuntu/compiler/./lib  -Wl,-rpath,/home/ubuntu/compiler/./lib -lTools /home/ubuntu/compiler/bin/libFront.a -lIR /home/ubuntu/compiler/bin/libjsoncpp.a 
+/usr/bin/c++ -Wall CMakeFiles/compiler.dir/main.cpp.o -o /home/ubuntu/compiler/bin/compiler   -L/home/ubuntu/compiler/./lib  -Wl,-rpath,/home/ubuntu/compiler/./lib /home/ubuntu/compiler/bin/libBackend.a -lTools /home/ubuntu/compiler/bin/libFront.a -lIR /home/ubuntu/compiler/bin/libjsoncpp.a 

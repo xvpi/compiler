@@ -143,6 +143,19 @@ Front/fast:
 .PHONY : Front/fast
 
 #=============================================================================
+# Target rules for targets named Backend
+
+# Build rule for target.
+Backend: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Backend
+.PHONY : Backend
+
+# fast build rule for target.
+Backend/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Backend.dir/build.make CMakeFiles/Backend.dir/build
+.PHONY : Backend/fast
+
+#=============================================================================
 # Target rules for targets named compiler
 
 # Build rule for target.
@@ -178,6 +191,30 @@ main.s: main.cpp.s
 main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/compiler.dir/build.make CMakeFiles/compiler.dir/main.cpp.s
 .PHONY : main.cpp.s
+
+src/backend/generator.o: src/backend/generator.cpp.o
+.PHONY : src/backend/generator.o
+
+# target to build an object file
+src/backend/generator.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Backend.dir/build.make CMakeFiles/Backend.dir/src/backend/generator.cpp.o
+.PHONY : src/backend/generator.cpp.o
+
+src/backend/generator.i: src/backend/generator.cpp.i
+.PHONY : src/backend/generator.i
+
+# target to preprocess a source file
+src/backend/generator.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Backend.dir/build.make CMakeFiles/Backend.dir/src/backend/generator.cpp.i
+.PHONY : src/backend/generator.cpp.i
+
+src/backend/generator.s: src/backend/generator.cpp.s
+.PHONY : src/backend/generator.s
+
+# target to generate assembly for a file
+src/backend/generator.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Backend.dir/build.make CMakeFiles/Backend.dir/src/backend/generator.cpp.s
+.PHONY : src/backend/generator.cpp.s
 
 src/front/abstract_syntax_tree.o: src/front/abstract_syntax_tree.cpp.o
 .PHONY : src/front/abstract_syntax_tree.o
@@ -331,12 +368,16 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... Backend"
 	@echo "... Front"
 	@echo "... compiler"
 	@echo "... jsoncpp"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... src/backend/generator.o"
+	@echo "... src/backend/generator.i"
+	@echo "... src/backend/generator.s"
 	@echo "... src/front/abstract_syntax_tree.o"
 	@echo "... src/front/abstract_syntax_tree.i"
 	@echo "... src/front/abstract_syntax_tree.s"
